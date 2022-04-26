@@ -39,10 +39,12 @@ node dist/main.js ./test-data/i-feel-coke.jpeg
 
 By default this applies a simple percentage color transform to the source image and writes the result in `./img-out/`:
 
-**Before**:
+## Before:
 
 ![original image](./test-data/i-feel-coke.jpeg)
 
-**After**:
+## After:
 
-![transformed image](./img-out/color_transform_i-feel-coke.jpeg)
+![shuffle transformed image](./img-out/shuffle_transform_i-feel-coke.jpeg)
+![color transformed image](./img-out/color_transform_i-feel-coke.jpeg)
+

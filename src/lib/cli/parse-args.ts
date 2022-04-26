@@ -14,7 +14,7 @@ export function parseArgV(argv: string[]): CliArgs {
   let filePath: string;
   parsedCliArgs = {} as CliArgs;
   argParts = argv.slice(2);
-  
+
   if(argParts.length > 0) {
     if(isString(argParts[0])) {
       filePath = parseFileArg(argParts[0]);

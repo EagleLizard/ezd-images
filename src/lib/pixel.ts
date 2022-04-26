@@ -40,3 +40,26 @@ export function rgbaToInt(pixel: RGBA): number {
     pixel.a,
   );
 }
+
+export function getPixelMatrix(image: Jimp): RGBA[][] {
+  let width: number, height: number;
+  let pixelMatrix: RGBA[][];
+  width = image.getWidth();
+  height = image.getHeight();
+  
+  pixelMatrix = Array(width).fill(0).map(() => {
+    return Array(height).fill(0).map(() => undefined);
+  });
+
+  for(let x = 0; x < width; ++x) {
+    let currPixelRow: RGBA[];
+    currPixelRow = pixelMatrix[x];
+    for(let y = 0; y < height; ++y) {
+      let colorVal: number, pixel: RGBA;
+      colorVal = image.getPixelColor(x, y);
+      pixel =  Jimp.intToRGBA(colorVal);
+      currPixelRow[y] = pixel;
+    }
+  }
+  return pixelMatrix;
+}
