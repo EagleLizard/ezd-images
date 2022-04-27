@@ -31,20 +31,17 @@ export async function shuffleTransform(imagePath: string, opts: ShuffleTransform
   scanPixelMatrix(pixelMatrix, nextWidth, nextHeight, (x, y, currPixel) => {
     if(
       (y > shiftYBy)
-      && ((y % shiftYBy) === 0)
+      && ((y % (shiftYBy * 2)) === 0)
     ) {
       for(let i = 0; i < shiftYBy; ++i) {
         let swapY: number, currY: number;
         let swapPixelVal: number, currPixelVal: number;
-        swapY = y - (shiftYBy - i);
-        currY = y - i;
+        swapY = y - ((shiftYBy * 2) - i);
+        currY = y - (shiftYBy - i);
         swapPixelVal = rgbaToInt(pixelMatrix[x][swapY]);
-        currPixelVal = rgbaToInt(pixelMatrix[x][y]);
+        currPixelVal = rgbaToInt(pixelMatrix[x][currY]);
         nextImage.setPixelColor(swapPixelVal, x, currY);
         nextImage.setPixelColor(currPixelVal, x, swapY);
-
-        // nextImage.setPixelColor(rgbaToInt(pixelMatrix[x][y - i]), x, y - (shiftYBy - i));
-        // nextImage.setPixelColor(rgbaToInt(pixelMatrix[x][y + i]), x, y + (shiftYBy - i));
       }
     }
   });

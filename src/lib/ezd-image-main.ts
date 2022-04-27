@@ -46,7 +46,7 @@ export async function ezdImageMain(argv: string[]) {
   transformPromises.push(colorTransformPromise);
 
   shuffleTransformPromise = shuffleTransform(cliArgs.filePath, {
-    yShufflePx: 10,
+    yShufflePx: 3,
   });
   transformPromises.push(shuffleTransformPromise);
 
